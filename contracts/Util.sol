@@ -5,7 +5,7 @@ import { SafeMath } from "../../../../lib/openzeppelin-contracts/contracts/math/
 
 import { IERC20Details } from "../../../external-interfaces/IERC20Details.sol";
 
-import { IMapleGlobals } from "../../../core/globals/v1/interfaces/IMapleGlobals.sol";
+import { IMapleGlobals } from "../../../core/globals/contracts/interfaces/IMapleGlobals.sol";
 
 /// @title Util is a library that contains utility functions.
 library Util {
