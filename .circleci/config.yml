@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  dapp_build:
+  dapp_test:
     docker:
       - image: bakii0499/dapptools:0.46.0
     steps:
@@ -15,5 +15,5 @@ workflows:
   version: 2
   test_all:
     jobs:
-      - dapp_build:
+      - dapp_test:
           context: seth
