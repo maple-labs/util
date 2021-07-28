@@ -22,9 +22,9 @@ library Util {
     function calcMinAmount(IMapleGlobalsLike globals, address fromAsset, address toAsset, uint256 swapAmt) external view returns (uint256) {
         return
             swapAmt
-                .mul(globals.getLatestPrice(fromAsset))           // Convert from `fromAsset` value.
+                .mul(globals.getLatestPrice(fromAsset))               // Convert from `fromAsset` value.
                 .mul(10 ** IERC20DetailsLike(toAsset).decimals())     // Convert to `toAsset` decimal precision.
-                .div(globals.getLatestPrice(toAsset))             // Convert to `toAsset` value.
+                .div(globals.getLatestPrice(toAsset))                 // Convert to `toAsset` value.
                 .div(10 ** IERC20DetailsLike(fromAsset).decimals());  // Convert from `fromAsset` decimal precision.
     }
 

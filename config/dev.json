@@ -3,6 +3,9 @@
   "sources": {
     "contracts/Util.sol": {
       "urls": ["contracts/Util.sol"]
+    },
+    "contracts/test/Util.t.sol": {
+      "urls": ["contracts/test/Util.t.sol"]
     }
   },
   "settings": {
