@@ -19,13 +19,13 @@ library Util {
         @param  swapAmt   The amount of `fromAsset` to be swapped.
         @return The expected amount of `toAsset` to receive from swap based on current oracle prices.
      */
-    function calcMinAmount(IMapleGlobalsLike globals, address fromAsset, address toAsset, uint256 swapAmt) external view returns (uint256) {
+    function calcMinAmount(address globals, address fromAsset, address toAsset, uint256 swapAmt) external view returns (uint256) {
         return
             swapAmt
-                .mul(globals.getLatestPrice(fromAsset))               // Convert from `fromAsset` value.
-                .mul(10 ** IERC20DetailsLike(toAsset).decimals())     // Convert to `toAsset` decimal precision.
-                .div(globals.getLatestPrice(toAsset))                 // Convert to `toAsset` value.
-                .div(10 ** IERC20DetailsLike(fromAsset).decimals());  // Convert from `fromAsset` decimal precision.
+                .mul(IMapleGlobalsLike(globals).getLatestPrice(fromAsset))  // Convert from `fromAsset` value.
+                .mul(10 ** IERC20DetailsLike(toAsset).decimals())           // Convert to `toAsset` decimal precision.
+                .div(IMapleGlobalsLike(globals).getLatestPrice(toAsset))    // Convert to `toAsset` value.
+                .div(10 ** IERC20DetailsLike(fromAsset).decimals());        // Convert from `fromAsset` decimal precision.
     }
 
 }

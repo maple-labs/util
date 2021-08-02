@@ -7,13 +7,11 @@ do
         t) test=${OPTARG};;
         r) runs=${OPTARG};;
         b) build=${OPTARG};;
-        c) config=${OPTARG};;
     esac
 done
 
 runs=$([ -z "$runs" ] && echo "1" || echo "$runs")
 build=$([ -z "$build" ] && echo "1" || echo "$build")
-config=$([ -z "$config" ] && echo "./config/dev.json" || echo "$config")
 skip_build=$([ "$build" == "0" ] && echo "1" || echo "0")
 
 [[ $SKIP_MAINNET_CHECK || "$ETH_RPC_URL" && "$(seth chain)" == "ethlive" ]] || { echo "Please set a mainnet ETH_RPC_URL"; exit 1; }

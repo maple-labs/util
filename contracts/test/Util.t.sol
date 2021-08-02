@@ -48,7 +48,7 @@ contract UtilTest is DSTest {
         globals.setLatestPrice(address(fromAsset), fromAssetLatestPrice);
         globals.setLatestPrice(address(toAsset),   toAssetLatestPrice);
 
-        assertEq(Util.calcMinAmount(globals, address(fromAsset), address(toAsset), swapAmount), expectedAmount);
+        assertEq(Util.calcMinAmount(address(globals), address(fromAsset), address(toAsset), swapAmount), expectedAmount);
     }
 
     function test_calcMinAmount() external {
