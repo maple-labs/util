@@ -4,7 +4,7 @@ pragma solidity 0.6.11;
 import { SafeMath } from "../modules/openzeppelin-contracts/contracts/math/SafeMath.sol";
 
 import { IERC20DetailsLike } from "./interfaces/IERC20DetailsLike.sol";
-import { IMapleGlobalsLike } from "./interfaces/IMapleGlobalsLike.sol";
+import { IMapleGlobals } from "./interfaces/IMapleGlobals.sol";
 
 /// @title Util is a library that contains utility functions.
 library Util {
@@ -19,12 +19,12 @@ library Util {
         @param  swapAmt   The amount of `fromAsset` to be swapped.
         @return The expected amount of `toAsset` to receive from swap based on current oracle prices.
      */
-    function calcMinAmount(address globals, address fromAsset, address toAsset, uint256 swapAmt) external view returns (uint256) {
+    function calcMinAmount(IMapleGlobals globals, address fromAsset, address toAsset, uint256 swapAmt) external view returns (uint256) {
         return
             swapAmt
-                .mul(IMapleGlobalsLike(globals).getLatestPrice(fromAsset))  // Convert from `fromAsset` value.
+                .mul(globals.getLatestPrice(fromAsset))  // Convert from `fromAsset` value.
                 .mul(10 ** IERC20DetailsLike(toAsset).decimals())           // Convert to `toAsset` decimal precision.
-                .div(IMapleGlobalsLike(globals).getLatestPrice(toAsset))    // Convert to `toAsset` value.
+                .div(globals.getLatestPrice(toAsset))    // Convert to `toAsset` value.
                 .div(10 ** IERC20DetailsLike(fromAsset).decimals());        // Convert from `fromAsset` decimal precision.
     }
 

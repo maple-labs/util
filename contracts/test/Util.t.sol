@@ -3,11 +3,11 @@ pragma solidity 0.6.11;
 
 import { DSTest } from "../../modules/ds-test/src/test.sol";
 
-import { IMapleGlobalsLike } from "../interfaces/IMapleGlobalsLike.sol";
+import { IMapleGlobals } from "../interfaces/IMapleGlobals.sol";
 
 import { Util } from "../Util.sol";
 
-contract MockGlobals is IMapleGlobalsLike {
+contract MockGlobals is IMapleGlobals {
 
     mapping(address => uint256) internal prices;
 
@@ -48,7 +48,7 @@ contract UtilTest is DSTest {
         globals.setLatestPrice(address(fromAsset), fromAssetLatestPrice);
         globals.setLatestPrice(address(toAsset),   toAssetLatestPrice);
 
-        assertEq(Util.calcMinAmount(address(globals), address(fromAsset), address(toAsset), swapAmount), expectedAmount);
+        assertEq(Util.calcMinAmount(globals, address(fromAsset), address(toAsset), swapAmount), expectedAmount);
     }
 
     function test_calcMinAmount() external {
