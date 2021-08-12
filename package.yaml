@@ -1,0 +1,8 @@
+name: util
+version: 1.0.0
+source: contracts
+packages:
+  - path: contracts/Util.sol
+    contractName: Util
+    customChecksum: 0x966e7fefb60e443084fedca0a71242856e201128b5b4cbb922c010cdaea4b334
+customDescription: Util Artifacts and ABIs
