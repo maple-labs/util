@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-pragma solidity 0.6.11;
+pragma solidity 0.8.7;
 
-import { SafeMath } from "../modules/openzeppelin-contracts/contracts/math/SafeMath.sol";
+import { SafeMath } from "../modules/openzeppelin-contracts/contracts/utils/math/SafeMath.sol";
 
 import { IERC20DetailsLike } from "./interfaces/IERC20DetailsLike.sol";
 import { IMapleGlobals } from "./interfaces/IMapleGlobals.sol";
